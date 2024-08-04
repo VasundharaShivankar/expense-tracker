@@ -7,7 +7,6 @@ import Signup from './views/Signup/Signup.js';
 import "./global.css"
 import AddTransaction from './views/AddTransaction/AddTransaction.js';
 
-
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
 const router =createBrowserRouter([

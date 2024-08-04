@@ -19,7 +19,6 @@ const connectDB = async () => {
     if(conn){
         console.log("MongoDB connected📦");
     }
-
 }
 connectDB();
 

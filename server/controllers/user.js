@@ -1,49 +1,49 @@
 import User from "../models/User.js";
 
-const postSignup = async (req, res) => {
-    const { fullName, email, password, dob } = req.body;
+const postSignup = async(req, res)=>{
+    const {fullName , email, password, dob  } = req.body;
 
     const user = new User({
         fullName,
         email,
         password,
-        dob: new Date(dob)
+        dob: new Date(dob) 
     });
 
-    try {
-        const savedUser = await user.save();
+    try{
+    const savedUser = await user.save();
 
-        res.json({
-            success: true,
-            message: `Signup Successfully`,
-            data: savedUser
-        });
-    }
-    catch (e) {
-        res.json({
+    res.json({
+        success: true,
+        message: "Signup successfully",
+        data: savedUser
+    })
+}
+catch(e){
+    res.json({
             success: false,
             message: e.message,
             data: null
         })
     }
-
 }
 
-const postLogin = async (req, res) => {
-    const { email, password } = req.body;
-    const user = await User.findOne({
-        email: email,
-        password: password
-    });
+const postLogin =  async (req, res)=>{
+    const {email, password } = req.body;
 
-    if (user) {
+    const user = await User.findOne({
+        email,
+        password
+    })
+
+    if(user){
         return res.json({
             success: true,
-            message: "Login Successfully",
+            message: "Login successfully",
             data: user
         })
     }
-    else {
+    else{
         return res.json({
             success: false,
             message: "Invalid credentials",
@@ -52,4 +52,7 @@ const postLogin = async (req, res) => {
     }
 }
 
-export { postSignup, postLogin }
+export {
+    postSignup,
+    postLogin
+}

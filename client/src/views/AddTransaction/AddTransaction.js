@@ -5,17 +5,14 @@ import "./AddTransaction.css"
 import IllustrationAdd from "./add-illustration.jpg"
 
 function AddTransaction() {
-
     const [user, setUser] = useState('')
     const [title, setTitle] = useState('')
     const [amount, setAmount] = useState(0)
     const [category, setCategory] = useState('')
     const [type, setType] = useState('credit')
 
-
     useEffect(()=>{
         const currentUser = JSON.parse(localStorage.getItem("currentUser"))
-    
         if(currentUser){
           setUser(currentUser)
         }
@@ -36,7 +33,6 @@ function AddTransaction() {
         console.log(response)
         if(response.data.success){
           toast.success("Transaction Added Successfully")
-
           setTitle('')
           setAmount(0)
           setCategory('')
@@ -45,9 +41,6 @@ function AddTransaction() {
         else{
           toast.error("Failed to Add Transaction")
         }
-
-      
-
         setTimeout(() => {
             window.location.href = "/"
         }, 1000);
